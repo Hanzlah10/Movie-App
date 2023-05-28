@@ -1,3 +1,24 @@
 <ion-app>
-  <ion-router-outlet></ion-router-outlet>
+  <ion-menu menuId="main-menu" contentId="main" color="warning">
+    <ion-toolbar>
+      <ion-header>
+      </ion-header>
+    </ion-toolbar>
+    <ion-content>
+      <ion-menu-toggle>
+        <ion-list>
+          <ion-item color="warning" routerLink="/about">
+            <ion-icon name="help-outline" slot="start">
+            </ion-icon>
+            <ion-label>
+              About
+            </ion-label>
+          </ion-item>
+        </ion-list>
+      </ion-menu-toggle>
+
+    </ion-content>
+
+  </ion-menu>
+  <ion-router-outlet id="main"></ion-router-outlet>
 </ion-app>

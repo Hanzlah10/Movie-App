@@ -1,0 +1,56 @@
+<ion-header>
+  <ion-toolbar color="warning">
+    <ion-buttons>
+      <ion-back-button slot="start">
+      </ion-back-button>
+    </ion-buttons>
+    <ion-title>{{movie?.title}}</ion-title>
+
+  </ion-toolbar>
+</ion-header>
+
+<ion-content color="dark">
+  <ion-grid>
+    <ion-row>
+      <ion-col sizeMd="6" offsetMd="3">
+        <ion-card *ngIf="movie" color="warning">
+          <ion-img [src]="imageUrl+'/w400'+movie?.poster_path"></ion-img>
+          <ion-card-header>
+            <ion-card-subtitle>{{movie?.status}}</ion-card-subtitle>
+            <ion-card-title>{{movie?.title}}</ion-card-title>
+            <ion-card-subtitle>{{movie?.tagline}}</ion-card-subtitle>
+
+
+            <ion-text color="tertiary" line="none">
+              <span *ngFor="let item of movie.genres , let Last = last ">
+                {{item.name}} {{!Last ? " | " :" "}}
+              </span>
+            </ion-text>
+          </ion-card-header>
+
+            <ion-card-content>
+
+              <ion-label color="dark">
+                {{movie?.overview}}
+              </ion-label>
+
+            <ion-item lines="none" color="warning">
+              <ion-icon name="cash-outline" slot="start"></ion-icon>
+              <ion-text>{{movie.budget | currency: 'INR'}}</ion-text>
+            </ion-item>
+            <ion-item lines="none" color="warning">
+              <ion-icon name="calendar-clear-outline" slot="start"></ion-icon>
+              <ion-text>{{movie.release_date | date:'y'}}</ion-text>
+            </ion-item>
+          </ion-card-content>
+
+        </ion-card>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>
+<ion-footer>
+  <ion-button expand = "full" (click)="OpenHomepage()" color="warning">
+    OpenHomepage<ion-icon name="navigate-sharp"></ion-icon>
+  </ion-button>
+</ion-footer>
